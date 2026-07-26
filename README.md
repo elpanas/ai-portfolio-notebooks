@@ -12,6 +12,7 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 .
 ├── 01-computer-vision/
 │   └── KerasCNN.ipynb          # Classificazione immagini con CNN
+│   └── KerasCNN Enhanced.ipynb          # Classificazione immagini con CNN e tecniche avanzate
 ├── 02-time-series/
 │   └── TODO.ipynb      # Generazione/Analisi sequenze con LSTM
 ├── 03-classical-ml/
