@@ -65,10 +65,7 @@ model = keras.Sequential([
     # 64 unità di memoria temporale
     layers.LSTM(64, return_sequences=False),
 
-    # 3. Dense Layer Intermedio
-    layers.Dense(32, activation='relu'),
-
-    # 4. Classificatore Finale (5 Classi Softmax)
+    # 3. Classificatore Finale (5 Classi Softmax)
     layers.Dense(5, activation='softmax')
 ])
 ```
@@ -107,17 +104,7 @@ print(classification_report(y_test, predicted_classes, target_names=nomi_classi)
 
 ---
 
-## 🚀 Prospettive e Sviluppi Futuri
-
-Per migliorare ulteriormente le capacità di generalizzazione e la velocità di elaborazione sui segnali temporali ECG, sono previste le seguenti estensioni dell'architettura:
-
-1. **GRU (Gated Recurrent Unit):** Sostituzione dei blocchi LSTM con celle GRU per ridurre il numero di parametri e velocizzare il training mantenendo performance equivalenti.
-2. **1D-CNN (Convolutional Neural Networks 1D):** Utilizzo di filtri convoluzionali unidimensionali per l'estrazione automatica delle caratteristiche morfologiche dell'onda (intervallo PR, complesso QRS, tratto ST).
-3. **Architetture Ibride (1D-CNN + LSTM):** Combinazione di 1D-CNN (estrazione di feature visive dal segnale) e LSTM (analisi dell'evoluzione temporale di tali feature).
-
----
-
-## 🚀 Come Eseguire i Notebook
+## Come Eseguire i Notebook
 
 1. **Notebook Inclusi:**
    - `KerasLSTMPredictor.ipynb` / `KerasLSTMClassification.ipynb`
