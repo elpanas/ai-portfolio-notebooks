@@ -81,6 +81,39 @@ model = keras.Sequential([
 
 Nel dataset MIT-BIH, la stragrande maggioranza dei battiti è di tipo **N (Normale)** (~85%), mentre le aritmie (**S, V, F, Q**) sono molto rare.
 
+## ⚖️ Gestione dello Sbilanciamento delle Classi (Class Weights & LR)
+
+Il dataset MIT-BIH presenta una forte sproporzione verso la classe normale ($N$). 
+
+### Strategia di Bilanciamento
+Per evitare che la rete ignori le aritmie rare, sono stati adottati i **Class Weights scalati** abbinati a un **Learning Rate ridotto** per stabilizzare la discesa del gradiente:
+
+1. **Learning Rate a `0.0001`:** L'uso di pesi sbilanciati con un LR standard (`0.001`) provocava forti oscillazioni nell'Accuracy (effetto "montagne russe"). Un LR più piccolo ha permesso una convergenza fluida e stabile.
+2. **Class Weights Scalati:** Anziché usare pesi trascurabili o estremi, si sono ammorbidite le penalità applicando una scala esponenziale/radice ai pesi calcolati per evitare che la perdita esplodesse ad ogni errore sulle classi rare.
+
+```python
+from sklearn.utils import class_weight
+
+# BILANCIAMENTO PESI
+# Calcola i pesi inversamente proporzionali alla frequenza
+weights = class_weight.compute_class_weight(
+    class_weight='balanced',
+    classes=np.unique(y_train),
+    y=y_train
+)
+class_weights_dict = dict(enumerate(weights))
+
+# Smorziamo i pesi estremi facendone la radice quadrata
+scaled_weights = {cls: weight**0.5 for cls, weight in class_weights_dict.items()}
+
+# Compilazione con Learning Rate ridotto
+model.compile(
+    optimizer=keras.optimizers.Adam(learning_rate=0.0001),
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+```
+
 ### Selezione della Classe Predetta (`np.argmax`)
 Il modello genera in output un vettore di 5 probabilità per ogni battito `(N_test, 5)`. Per identificare la classe predetta per ogni riga, si applica `np.argmax` lungo l'asse orizzontale (`axis=1`):
 
