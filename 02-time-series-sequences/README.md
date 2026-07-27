@@ -1,4 +1,4 @@
-# 🫀 ECG Heartbeat Classification & Time Series Analysis with Keras (LSTM)
+# ❤️ ECG Heartbeat Classification & Time Series Analysis with Keras (LSTM)
 
 Questo progetto implementa una rete neurale ricorsiva (**LSTM - Long Short-Term Memory**) per l'analisi di segnali temporali ECG e la classificazione di battiti cardiaci in **5 categorie** (Normal, Supraventricular Premature, Premature Ventricular Contraction, Fusion of Ventricular, Unclassifiable Beat).
 
