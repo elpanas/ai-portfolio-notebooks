@@ -45,10 +45,6 @@ Essendo il segnale a canale singolo, occorre aggiungere la 3ª dimensione (Featu
 X_train_3D = np.expand_dims(X_train, axis=2)
 X_test_3D  = np.expand_dims(X_test, axis=2)
 ```
-
-### 3. Shuffle Precauzionale
-Poiché molti dataset clinici presentano i battiti ordinati per classe, l'estrazione casuale del validation set tramite `validation_split` senza uno shuffle preliminare rischierebbe di escludere intere classi dalla fase di validazione. Viene applicato uno **shuffle casuale** tramite Pandas/NumPy prima dell'addestramento per bilanciare correttamente il train/validation set.
-
 ---
 
 ## 🏗️ Architettura del Modello (LSTM Classifier)
@@ -77,42 +73,44 @@ model = keras.Sequential([
 
 ---
 
-## 📈 Gestione del Class Imbalance e Valutazione
+## 📈 Gestione del Class Imbalance
 
 Nel dataset MIT-BIH, la stragrande maggioranza dei battiti è di tipo **N (Normale)** (~85%), mentre le aritmie (**S, V, F, Q**) sono molto rare.
 
-## ⚖️ Gestione dello Sbilanciamento delle Classi (Class Weights & LR)
+### Bilanciamento delle Classi con SMOTE + Shuffle
+Per contrastare il forte sbilanciamento del dataset senza ricorrere ai pesi delle classi, si utilizza **SMOTE** per generare campioni sintetici per le classi rare.
 
-Il dataset MIT-BIH presenta una forte sproporzione verso la classe normale ($N$). 
-
-### Strategia di Bilanciamento
-Per evitare che la rete ignori le aritmie rare, sono stati adottati i **Class Weights scalati** abbinati a un **Learning Rate ridotto** per stabilizzare la discesa del gradiente:
-
-1. **Learning Rate a `0.0001`:** L'uso di pesi sbilanciati con un LR standard (`0.001`) provocava forti oscillazioni nell'Accuracy (effetto "montagne russe"). Un LR più piccolo ha permesso una convergenza fluida e stabile.
-2. **Class Weights Scalati:** Anziché usare pesi trascurabili o estremi, si sono ammorbidite le penalità applicando una scala esponenziale/radice ai pesi calcolati per evitare che la perdita esplodesse ad ogni errore sulle classi rare.
+> **Nota:** Poiché SMOTE accoda i nuovi dati sintetici in blocchi in fondo all'array, è fondamentale applicare un rimescolamento (`shuffle`) subito dopo SMOTE. Senza questo passaggio, il parametro `validation_split` di Keras taglierebbe l'ultimo blocco di dati contenente un'unica classe generata, compromettendo la valutazione in fase di training.
 
 ```python
-from sklearn.utils import class_weight
+# DATA AUGMENTATION CON SMOTE
+# Le classi sono molto sbilanciate quindi uso SMOTE, un oversempler
+# che pareggia il numero di campioni nelle classi meno rappresentate
+# 1. Generatore di dati sintetici
+smote = SMOTE(random_state=42)
 
-# BILANCIAMENTO PESI
-# Calcola i pesi inversamente proporzionali alla frequenza
-weights = class_weight.compute_class_weight(
-    class_weight='balanced',
-    classes=np.unique(y_train),
-    y=y_train
-)
-class_weights_dict = dict(enumerate(weights))
+# 2. Genera i nuovi campioni bilanciati
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
-# Smorziamo i pesi estremi facendone la radice quadrata
-scaled_weights = {cls: weight**0.5 for cls, weight in class_weights_dict.items()}
+# 3. Mescola i dati
+X_train_resampled, y_train_resampled = shuffle(X_train_resampled, y_train_resampled, random_state=42)
+```
+---
 
-# Compilazione con Learning Rate ridotto
-model.compile(
-    optimizer=keras.optimizers.Adam(learning_rate=0.0001),
-    loss='sparse_categorical_crossentropy',
-    metrics=['accuracy']
+## Early Stopping
+Per evitare il sovrappeso del training, si utilizza **Early Stopping** con la metrica di valutazione desiderata.
+
+```python
+# Configurazione EarlyStopping
+early_stop = EarlyStopping(
+    monitor='val_loss',         # Controlla la loss sul validation set
+    patience=4,                 # Aspetta 4 epoche di "secca" prima di fermarsi
+    restore_best_weights=True,  # RIPRISTINA I PESI MIGLIORI (non gli ultimi!)
+    verbose=1                   # Stampa un messaggio in console quando si attiva
 )
 ```
+
+## 📝 Valutazione del Modello
 
 ### Selezione della Classe Predetta (`np.argmax`)
 Il modello genera in output un vettore di 5 probabilità per ogni battito `(N_test, 5)`. Per identificare la classe predetta per ogni riga, si applica `np.argmax` lungo l'asse orizzontale (`axis=1`):
@@ -129,12 +127,22 @@ predicted_classes = np.argmax(predictions, axis=1)
 Poiché la semplice Accuracy globale può trarre in inganno su dataset sbilanciati, l'analisi delle performance viene integrata tramite **Precision**, **Recall** e **F1-Score** specifici per classe:
 
 ```python
-from sklearn.metrics import classification_report
-
 nomi_classi = ['N', 'S', 'V', 'F', 'Q']
 print(classification_report(y_test, predicted_classes, target_names=nomi_classi))
 ```
+```text
+                 precision  recall   f1-score  support
 
+           N       0.99      0.89      0.93     18118
+           S       0.30      0.81      0.44       556
+           V       0.74      0.91      0.81      1448
+           F       0.23      0.88      0.36       162
+           Q       0.89      0.96      0.92      1608
+
+    accuracy                           0.89     21892
+   macro avg       0.63      0.89      0.69     21892
+weighted avg       0.94      0.89      0.91     21892
+```
 ---
 
 ## Come Eseguire i Notebook
