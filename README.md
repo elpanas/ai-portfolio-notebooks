@@ -26,13 +26,13 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 
 ## 📊 Indice dei Modelli ed Esperimenti
 
-| Categoria            | Architettura / Algoritmo | Notebook                                                             | Dataset                 | Descrizione & Risultati                                                           |
-| :------------------- | :----------------------- | :------------------------------------------------------------------- | :---------------------- | :-------------------------------------------------------------------------------- |
-| **Computer Vision**  | CNN (Keras / TensorFlow) | [`KerasCNN.ipynb`](./01-computer-vision/KerasCNN.ipynb)              | Custom / Natural Images | Classificazione multilabelle. Raggiunta un'accuratezza del **~81%** sul test set. |
-| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb)         | Time Series      | Previsioni del tempo.      |
-| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LATM/KerasLSTMClassification.ipynb)         | Time Series      | Classificazione ECG.      |
-| **Sequenze Temporali**   | GRU / Recurrent NN      | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb)         | Time Series      | Classificazione ECG.      |
-| **Machine Learning** | Regressione Lineare      | [`TODO.ipynb`](./03-classical-ml/LinearRegression.ipynb) | Synthetic / Tabular     | Implementazione e analisi dei residui, ottimizzazione tramite gradient descent.   |
+| Categoria | Architettura / Algoritmo | Notebook | Dataset | Descrizione & Risultati |
+| :--- | :--- | :--- | :--- | :--- |
+| **Computer Vision** | CNN (Keras / TensorFlow) | [`KerasCNN.ipynb`](./01-computer-vision/KerasCNN.ipynb) | Custom / Natural Images | Classificazione multilabelle. Raggiunta un'accuratezza del **~81%** sul test set. |
+| **Sequenze Temporali** | LSTM / Recurrent NN | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb) | Daily Delhi Climate | Previsioni meteo e analisi di serie temporali. |
+| **Sequenze Temporali** | LSTM / Recurrent NN | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMClassification.ipynb) | ECG Signals | Classificazione di segnali elettrocardiografici (ECG). |
+| **Sequenze Temporali** | GRU / Recurrent NN | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb) | ECG Signals | Classificazione di segnali ECG ottimizzata con unità GRU. |
+| **Tabular Data** | XGBoost (Gradient Boosting) | [`XGBoost.ipynb`](./03-tabular-classification/XGBoost.ipynb) | Telco Churn | Predizione dell'abbandono clienti basata sul ranking delle probabilità continuative (ROC-AUC). |
 
 ---
 
