@@ -16,6 +16,7 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 ├── 02-time-series/
 │   └── KerasLSTMPredictor.ipynb      # Previsioni meteo su sequenze con LSTM
 │   └── KerasLSTMClassification.ipynb  # Classificazione ECG con LSTM
+│   └── KerasGRUClassification.ipynb  # Classificazione ECG con GRU
 ├── 03-classical-ml/
 │   └── TODO  # Algoritmi di regressione e analisi
 └── README.md
@@ -28,8 +29,9 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 | Categoria            | Architettura / Algoritmo | Notebook                                                             | Dataset                 | Descrizione & Risultati                                                           |
 | :------------------- | :----------------------- | :------------------------------------------------------------------- | :---------------------- | :-------------------------------------------------------------------------------- |
 | **Computer Vision**  | CNN (Keras / TensorFlow) | [`KerasCNN.ipynb`](./01-computer-vision/KerasCNN.ipynb)              | Custom / Natural Images | Classificazione multilabelle. Raggiunta un'accuratezza del **~81%** sul test set. |
-| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMPredictor.ipynb`](./02-time-series/KerasLSTMPredictor.ipynb)         | Time Series      | Previsioni del tempo.      |
-| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMClassification.ipynb`](./02-time-series/KerasLSTMClassification.ipynb)         | Time Series      | Classificazione ECG.      |
+| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb)         | Time Series      | Previsioni del tempo.      |
+| **Sequenze Temporali**   | LSTM / Recurrent NN      | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LATM/KerasLSTMClassification.ipynb)         | Time Series      | Classificazione ECG.      |
+| **Sequenze Temporali**   | GRU / Recurrent NN      | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb)         | Time Series      | Classificazione ECG.      |
 | **Machine Learning** | Regressione Lineare      | [`TODO.ipynb`](./03-classical-ml/LinearRegression.ipynb) | Synthetic / Tabular     | Implementazione e analisi dei residui, ottimizzazione tramite gradient descent.   |
 
 ---
