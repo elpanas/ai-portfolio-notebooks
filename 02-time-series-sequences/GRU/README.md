@@ -1,4 +1,4 @@
-# 🫀 Classificazione di Segnali ECG tramite GRU & SMOTE
+# ❤️ Classificazione di Segnali ECG tramite GRU & SMOTE
 
 Questo repository contiene una pipeline di Deep Learning basata su un'architettura **Gated Recurrent Unit (GRU)** per classificare 5 diverse tipologie di battiti cardiaci da dati elettrocardiografici (ECG) (dataset MIT-BIH / PTB-XL).
 
