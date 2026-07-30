@@ -17,8 +17,10 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 │   └── KerasLSTMPredictor.ipynb      # Previsioni meteo su sequenze con LSTM
 │   └── KerasLSTMClassification.ipynb  # Classificazione ECG con LSTM
 │   └── KerasGRUClassification.ipynb  # Classificazione ECG con GRU
-├── 03-classical-ml/
-│   └── TODO  # Algoritmi di regressione e analisi
+├── 03-tabular-classification/
+│   └── XGBoost.ipynb              # Predizione abbandono clienti con XGBoost
+├── 04-nlp-llm-finetuning/
+│   └── NLP_LLM_LoRA.ipynb          # LLM fine-tuning con LoRA
 └── README.md
 ```
 
@@ -29,10 +31,11 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 | Categoria | Architettura / Algoritmo | Notebook | Dataset | Descrizione & Risultati |
 | :--- | :--- | :--- | :--- | :--- |
 | **Computer Vision** | CNN (Keras / TensorFlow) | [`KerasCNN.ipynb`](./01-computer-vision/KerasCNN.ipynb) | Custom / Natural Images | Classificazione multilabelle. Raggiunta un'accuratezza del **~81%** sul test set. |
-| **Sequenze Temporali** | LSTM / Recurrent NN | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb) | Daily Delhi Climate | Previsioni meteo e analisi di serie temporali. |
-| **Sequenze Temporali** | LSTM / Recurrent NN | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMClassification.ipynb) | ECG Signals | Classificazione di segnali elettrocardiografici (ECG). |
-| **Sequenze Temporali** | GRU / Recurrent NN | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb) | ECG Signals | Classificazione di segnali ECG ottimizzata con unità GRU. |
+| **Sequenze Temporali** | LSTM | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb) | Daily Delhi Climate | Previsioni meteo e analisi di serie temporali. |
+| **Sequenze Temporali** | LSTM | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMClassification.ipynb) | ECG Signals | Classificazione di segnali elettrocardiografici (ECG). |
+| **Sequenze Temporali** | GRU | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb) | ECG Signals | Classificazione di segnali ECG ottimizzata con unità GRU. |
 | **Tabular Data** | XGBoost (Gradient Boosting) | [`XGBoost.ipynb`](./03-tabular-classification/XGBoost.ipynb) | Telco Churn | Predizione dell'abbandono clienti basata sul ranking delle probabilità continuative (ROC-AUC). |
+| **Natural Language Processing** | NLP / LLM (LoRA) | [`NLP_LLM_QLoRA.ipynb`](./04-nlp-llm-finetuning/NLP_LLM_QLoRA.ipynb) | Custom / Ticket JSON | Fine-Tuning efficiente a 4-bit per l'estrazione dati da ticket in formato JSON strutturato. |
 
 ---
 
