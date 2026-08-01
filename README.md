@@ -14,11 +14,13 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 │   └── KerasCNN.ipynb          # Classificazione immagini con CNN
 │   └── KerasCNN Enhanced.ipynb          # Classificazione immagini con CNN e tecniche avanzate
 ├── 02-time-series/
-│   └── KerasLSTMPredictor.ipynb      # Previsioni meteo su sequenze con LSTM
-│   └── KerasLSTMClassification.ipynb  # Classificazione ECG con LSTM
-│   └── KerasGRUClassification.ipynb  # Classificazione ECG con GRU
-├── 03-tabular-classification/
-│   └── XGBoost.ipynb              # Predizione abbandono clienti con XGBoost
+│   └── LSTM/KerasLSTMPredictor.ipynb      # Previsioni meteo su sequenze con LSTM
+│   └── LSTM/KerasLSTMClassification.ipynb  # Classificazione ECG con LSTM
+│   └── GRU/KerasGRUClassification.ipynb  # Classificazione ECG con GRU
+├── 03-machine-learning/
+│   └── sueprvised_tabular/XGBoost.ipynb              # Predizione abbandono clienti con XGBoost
+│   └── unsupervised/ML_Kmeans.ipynb          # Clusterizzazione clienti con K-Means
+│   └── unsupervised/ML_PCA.ipynb              # Dimensionalità ridotta con PCA
 ├── 04-nlp-llm-finetuning/
 │   └── NLP_LLM_LoRA.ipynb          # LLM fine-tuning con LoRA
 └── README.md
@@ -34,7 +36,9 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 | **Sequenze Temporali** | LSTM | [`KerasLSTMPredictor.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMPredictor.ipynb) | Daily Delhi Climate | Previsioni meteo e analisi di serie temporali. |
 | **Sequenze Temporali** | LSTM | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMClassification.ipynb) | ECG Signals | Classificazione di segnali elettrocardiografici (ECG). |
 | **Sequenze Temporali** | GRU | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb) | ECG Signals | Classificazione di segnali ECG ottimizzata con unità GRU. |
-| **Tabular Data** | XGBoost (Gradient Boosting) | [`XGBoost.ipynb`](./03-tabular-classification/XGBoost.ipynb) | Telco Churn | Predizione dell'abbandono clienti basata sul ranking delle probabilità continuative (ROC-AUC). |
+| **Machine Learning** | XGBoost (Gradient Boosting) | [`XGBoost.ipynb`](./03-machine-learning/supervised_tabular/XGBoost.ipynb) | Telco Churn | Predizione dell'abbandono clienti basata sul ranking delle probabilità continuative (ROC-AUC). |
+| **Machine Learning** | K-Means | [`ML_K-Means.ipynb`](./03-machine-learning/unsupervised/ML_K-Means.ipynb) | Mall Customer Segmentation Data | Segmentazione dei clienti con K-Means. |
+| **Machine Learning** | PCA | [`ML_PCA.ipynb`](./03-machine-learning/unsupervised/ML_PCA.ipynb) | Wine dataset | Dimensionalità ridotta con PCA. |
 | **Natural Language Processing** | NLP / LLM (LoRA) | [`NLP_LLM_QLoRA.ipynb`](./04-nlp-llm-finetuning/NLP_LLM_QLoRA.ipynb) | Custom / Ticket JSON | Fine-Tuning efficiente a 4-bit per l'estrazione dati da ticket in formato JSON strutturato. |
 
 ---
