@@ -1,4 +1,4 @@
-# 🫀 Hybrid Quantum-Classical Heart Disease Classifier (HQNN)
+# Hybrid Quantum-Classical Heart Disease Classifier (HQNN)
 
 Un'architettura di Machine Learning Quantistico (QML) ibrida per la classificazione binaria del rischio di malattie cardiache. Il modello combina la capacità di estrazione delle feature delle reti neurali classiche (PyTorch Lightning) con le proprietà di entanglement e sovrapposizione di un circuito quantistico variazionale (TorchQuantum).
 
