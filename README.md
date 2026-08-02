@@ -23,6 +23,8 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 │   └── unsupervised/ML_PCA.ipynb              # Dimensionalità ridotta con PCA
 ├── 04-nlp-llm-finetuning/
 │   └── NLP_LLM_LoRA.ipynb          # LLM fine-tuning con LoRA
+├── 05-hybrid-quantum-model/
+│   └── QMLModel.ipynb          # Quantum Model per la classificazione di immagini
 └── README.md
 ```
 
@@ -37,9 +39,10 @@ La repository è organizzata in moduli distinti per tipologia di architettura e 
 | **Sequenze Temporali** | LSTM | [`KerasLSTMClassification.ipynb`](./02-time-series-sequences/LSTM/KerasLSTMClassification.ipynb) | ECG Signals | Classificazione di segnali elettrocardiografici (ECG). |
 | **Sequenze Temporali** | GRU | [`KerasGRUClassification.ipynb`](./02-time-series-sequences/GRU/KerasGRUClassification.ipynb) | ECG Signals | Classificazione di segnali ECG ottimizzata con unità GRU. |
 | **Machine Learning** | XGBoost (Gradient Boosting) | [`XGBoost.ipynb`](./03-machine-learning/supervised_tabular/XGBoost.ipynb) | Telco Churn | Predizione dell'abbandono clienti basata sul ranking delle probabilità continuative (ROC-AUC). |
-| **Machine Learning** | K-Means | [`ML_K-Means.ipynb`](./03-machine-learning/unsupervised/ML_K-Means.ipynb) | Mall Customer Segmentation Data | Segmentazione dei clienti con K-Means. |
+| **Machine Learning** | K-Means | [`ML_K-Means.ipynb`](./03-machine-learning/unsupervised/ML_K-Means.ipynb) | Mall Customers | Segmentazione dei clienti con K-Means. |
 | **Machine Learning** | PCA | [`ML_PCA.ipynb`](./03-machine-learning/unsupervised/ML_PCA.ipynb) | Wine dataset | Dimensionalità ridotta con PCA. |
 | **Natural Language Processing** | NLP / LLM (LoRA) | [`NLP_LLM_QLoRA.ipynb`](./04-nlp-llm-finetuning/NLP_LLM_QLoRA.ipynb) | Custom / Ticket JSON | Fine-Tuning efficiente a 4-bit per l'estrazione dati da ticket in formato JSON strutturato. |
+| **Quantum Computing** | Quantum Model | [`QMLModel.ipynb`](./05-hybrid-quantum-model/QMLModel.ipynb) | Heart Disease | Classificazione multilabel con modello quantistico. |
 
 ---
 
